@@ -15,12 +15,12 @@ import java.util.List;
 
 public class ListviewAdapter extends BaseAdapter {
 
-    List<Doctor> quotes;
+    List<Doctor> doctors;
     Context context;
     LayoutInflater inflater;
-    void setData(List<Doctor> quotes, Context context)
+    void setData(List<Doctor> docs, Context context)
     {
-        this.quotes=quotes;
+        this.doctors=docs;
         this.context=context;
         inflater = (LayoutInflater)context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -28,7 +28,7 @@ public class ListviewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return quotes.size();
+        return doctors.size();
     }
 
     @Override
@@ -44,13 +44,9 @@ public class ListviewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view=inflater.inflate(R.layout.listview_item,null);
+        TextView text=view.findViewById(R.id.list_item);
 
-        TextView quote=view.findViewById(R.id.quote);
-        TextView author=view.findViewById(R.id.author);
-
-        quote.setText(quotes.get(position).quote);
-        author.setText("-"+quotes.get(position).author);
-
+        text.setText(doctors.get(position).firstName+" "+doctors.get(position).lastName);
         return view;
     }
 }

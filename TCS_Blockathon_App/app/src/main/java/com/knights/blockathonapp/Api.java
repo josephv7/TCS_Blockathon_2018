@@ -1,5 +1,4 @@
 package com.knights.blockathonapp;
-
 import java.util.List;
 
 import retrofit2.Call;
@@ -11,9 +10,7 @@ import retrofit2.http.GET;
 
 public interface Api
 {
-
-    String BASE_URL = "http://localhost:3000/api/Doctor";
-    @GET("/v1/doctor/5")
+    String BASE_URL = "http://192.168.43.61:3000/";       //192.168.43.61
+    @GET("api/Doctor")
     Call<List<Doctor>> getDoctor();
-
 }
