@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TCS_Blockathon_App.iml" filepath="$PROJECT_DIR$/TCS_Blockathon_App.iml" />
-      <module fileurl="file://C:\Users\User\TCS_Blockathon_2018\TCS_Blockathon_App\TCS_Blockathon_App.iml" filepath="C:\Users\User\TCS_Blockathon_2018\TCS_Blockathon_App\TCS_Blockathon_App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\User\TCS_Blockathon_2018\TCS_Blockathon_App\app\app.iml" filepath="C:\Users\User\TCS_Blockathon_2018\TCS_Blockathon_App\app\app.iml" />
     </modules>
   </component>
 </project>
