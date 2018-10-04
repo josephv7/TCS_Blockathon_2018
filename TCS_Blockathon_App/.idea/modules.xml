@@ -3,11 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TCS_Blockathon_App.iml" filepath="$PROJECT_DIR$/TCS_Blockathon_App.iml" />
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/TCS_Blockathon_App.iml" filepath="$PROJECT_DIR$/TCS_Blockathon_App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-=======
->>>>>>> 2222a6321e81a665e149fa12408adff1ec79f505
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
