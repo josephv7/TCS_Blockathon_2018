@@ -3,7 +3,7 @@
     "composer": "^0.20.1"
   },
   "name": "tutorial-network",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "testing",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/tutorial-network.bna",
