@@ -55,10 +55,10 @@ public class Home extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "UID: "+id, Toast.LENGTH_SHORT).show();
 
 
+        String id1 = "resource%3Aorg.example.basic.Patient%23"+id;
 
 
-
-        Call<List<RecordDocument>> call = api.getRecord();
+        Call<List<RecordDocument>> call = api.getRecord(id1);
 
 
         call.enqueue(new Callback<List<RecordDocument>>() {

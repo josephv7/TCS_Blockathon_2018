@@ -20,7 +20,7 @@ public interface Api
     @GET("api/Doctor")
     Call<List<Doctor>> getDoctor();
 
-    @GET("/api/queries/ListByPatient?id=resource%3Aorg.example.basic.Patient%232001")
-    Call<List<RecordDocument>> getRecord();
+    @GET("/api/queries/ListByPatient")
+    Call<List<RecordDocument>> getRecord(@Query(value = "id",encoded = true) String id);
 
 }
