@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyB5QZqwCyKMcF4dqqzKcEW9BshtEd4Vcco",
+            authDomain: "tcs-blockathon-2018.firebaseapp.com",
+            databaseURL: "https://tcs-blockathon-2018.firebaseio.com",
+            projectId: "tcs-blockathon-2018",
+            storageBucket: "tcs-blockathon-2018.appspot.com",
+            messagingSenderId: "143835828628"
+          };
+          firebase.initializeApp(config);
+          // Get a reference to the database service
+        
+        
+        var ref = firebase.database().ref();
+       
+        // ref.child('users').child('doctors').on("value", function(snapshot) {
+        //    console.log(snapshot.val());
+        //    if(snapshot.child('doctor1').exists()){
+        //        console.log("present");
+        //        if(snapshot.child('doctor1').val() == 'pass1'){
+        //            console.log('log in success`!');
+        //        }
+        //    }
+        // }, function (error) {
+        //    console.log("Error: " + error.code);
+        // });
+      </script> -->
+
+        <script>
+        axios.get('http://192.168.43.61:3000/api/queries/ListRecordDoctorm?id=1001').then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+  axios.post('http://192.168.43.61:3000/api/Patient', {
+    patientId: '2004',
+    firstName: 'Patient',
+    lastName: 'Four'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+        </script>
+        </body>
+        </html>
