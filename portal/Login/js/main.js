@@ -19,6 +19,8 @@
   document.getElementById("signinform").addEventListener("submit", event => {
     event.preventDefault();
 
+
+    
   var uname=document.getElementById("loginname").value;
   var upass=document.getElementById("loginpass").value;
     console.log(uname+" "+upass);
@@ -28,6 +30,7 @@
           console.log("present");
           if(snapshot.child(uname).val() == upass){
               console.log('log in success`!');
+              window.location = "QRverify.html?id="+uname;
           }
       }
       else{

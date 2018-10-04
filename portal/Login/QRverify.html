@@ -16,46 +16,47 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-</head>
-<body>
+
 	
-	<div class="limiter">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/qrcode.js"></script>
+</head>
+<body style="background-color:#e6e6e6;">
+	
+	<div style="margin-top: -10%;">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-90 p-b-30">
-				<form id="signinform" class="login100-form">
+				
 					<span class="login100-form-title p-b-40">
-						Login with email
+					QR Verification
 					</span>
-					<div class="wrap-input100  m-b-16">
-						<input id="loginname" class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 m-b-20">
-						<span class="btn-show-pass">
-							<i class="fa fa fa-eye"></i>
-						</span>
-						<input id="loginpass" class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-					
-					
-					
-				</form>
-			</div>
+					<div id="qrcode" style="width:100px; height:100px; "></div></div>
 		</div>
 	</div>
 	
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-	<script src="js/main.js"></script>
-
+	<script type="text/javascript">
+	function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+      });
+      return vars;
+      }
+		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			width : 320,
+			height :320
+		});
+		function makeCode () {		
+			var elText = getUrlVars()["id"];;
+			
+			if (!elText) {
+				alert("Input a text");
+				return;
+			}
+			qrcode.makeCode(elText);
+		}
+		makeCode();
+		
+		</script>
 </body>
 </html>

@@ -1,281 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<title>Cactus ProSoft - User Account</title>
+	<title>Login V7</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-	<!--===============================================================================================-->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!--===============================================================================================-->
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-	<!--===============================================================================================-->
-
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!--===============================================================================================-->
-
-
-
-
+<!--===============================================================================================-->
 </head>
-
 <body>
-	<!-- Sign In -->
-	<div class="limiter " id="signin">
+	
+	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
-				<form id="signinform" class="login100-form ">
-					<span class="login100-form-title p-b-70">
-						Sign In
+			<div class="wrap-login100 p-t-90 p-b-30">
+				<form id="signinform" class="login100-form">
+					<span class="login100-form-title p-b-40">
+						Login with email
 					</span>
-					<span class="login100-form-avatar">
-						<img src="images/avatar-01.jpg" alt="Logo">
-					</span>
-
-					<div id="emptyemail" class=" wrap-input100 m-t-85 m-b-35">
-						<input id="loginname" class="input100" type="email" name="username">
-						<span class="focus-input100" data-placeholder="Username"></span>
+					<div class="wrap-input100  m-b-16">
+						<input id="loginname" class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 m-b-50">
-						<input id="loginpass" class="input100" type="password" name="pass">
-						<span class="focus-input100" data-placeholder="Password"></span>
+					<div class="wrap-input100 m-b-20">
+						<span class="btn-show-pass">
+							<i class="fa fa fa-eye"></i>
+						</span>
+						<input id="loginpass" class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">
+						<button class="login100-form-btn">
 							Login
 						</button>
 					</div>
 					
 					
-					<br>
-					<ul>
-
-						<li class="m-b-8">
-							<span class="txt1">
-								Forgot
-							</span>
-
-							<!-- <a href="#" onclick="otpSend(); return false;" class="txt2">
-								Username / Password?
-							</a> -->
-						</li>
-
-					</ul>
-					<br>
+					
 				</form>
 			</div>
 		</div>
 	</div>
-
-	<!-- Signup
-	<div class="limiter" id="signup">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
-				<form id="signupform" class="login100-form validate-form">
-					<span class="login100-form-title p-b-70">
-						Sign Up
-					</span>
-
-
-					<div id="regemptyemail" class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
-						<input id="username" class="input100" type="email" name="username">
-						<span class="focus-input100" data-placeholder="Username"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-						<input id="pass" class="input100" type="password" name="pass">
-						<span class="focus-input100" data-placeholder="Password"></span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">
-							Create an Account
-						</button>
-					</div>
-					<br>
-					<p>Or Register with</p>
-					<br>
-					<div class="row">
-						<div class="col-sm-6">
-							<a href="#" class="btn-face m-b-20">
-								<i class="fa fa-facebook-official"></i>
-								Facebook
-							</a>
-						</div>
-						<div class="col-sm-6">
-							<a href="#" class="btn-google m-b-20">
-								<i class="fa fa-google"></i>
-								Google
-							</a>
-						</div>
-					</div>
-
-					<br>
-					<p>Already have an account?</p>
-					<br>
-
-					<div class="container-login100-form-btn">
-						<button type="button" onclick="signIn()" class="login100-form-btn">
-							Login
-						</button>
-					</div>
-
-
-				</form>
-			</div>
-		</div>
-	</div> -->
-
-	<!-- Profile -->
-	<!-- Profile -->
-
-	<!-- Forget Password -->
-
-	<!-- OTP Number -->
-	<!-- <div class="limiter" id="otpsend">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
-				<form id="detailsforotp" class="login100-form validate-form">
-					<span class="login100-form-title p-b-70">
-						Forgot Your Password?
-					</span>
-
-					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter Email Id">
-						<input id="emailcheck" class="input100" type="email" name="email">
-						<span class="focus-input100" data-placeholder="Email"></span>
-					</div>
-					<p>Or </p>
-					<br>
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter Number">
-						<input id="mobnumber" class="input100" type="number" name="Number" maxlength="10">
-						<span class="focus-input100" data-placeholder="Number"></span>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="container-login100-form-btn">
-								<button type="button" onclick="detailsOtp()" class="login100-form-btn">
-									Send an OTP
-								</button>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="container-login100-form-btn">
-								<button type="button" onclick="signIn()" class="login100-form-btn">
-									Go Back
-								</button>
-							</div>
-						</div>
-					</div>
-					<br>
-
-
-				</form>
-			</div>
-		</div>
-	</div> -->
-	<!-- OTP Number -->
-
-	<!-- Checking OTP Number -->
-	<!-- <div class="limiter" id="otpcheck">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-70">
-						Enter your OTP
-					</span>
-
-
-					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter OTP">
-						<input class="input100" type="number" name="otp">
-						<span class="focus-input100" data-placeholder="OTP"></span>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-6">
-
-							<div class="container-login100-form-btn">
-								<button type="button" onclick="changePass()" class="login100-form-btn">
-									Check OTP
-								</button>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="container-login100-form-btn">
-									<button type="button" onclick="signIn()" class="login100-form-btn red">
-										Cancel
-									</button>
-								</div>
-							</div>
-						</div>
-						<br>
-
-
-				</form>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- Checking OTP Number -->
-
-
-	<!-- Change Password -->
-	<!-- <div class="limiter" id="changepass">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-70">
-						Change Your Password
-					</span>
-
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-						<input id="typepass" class="input100" type="password" name="pass">
-						<span class="focus-input100" data-placeholder="Password"></span>
-					</div>
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-						<input id="retypepass" class="input100" type="password" name="pass">
-						<span class="focus-input100" data-placeholder="Retype Password"></span>
-					</div>
-
-
-
-					<div class="container-login100-form-btn">
-						<button type="button" onclick="updatedPass()" class="login100-form-btn">
-							Change Password
-						</button>
-					</div>
-					<br>
-
-
-				</form>
-			</div>
-		</div>
-	</div> -->
-	<!-- Change Password -->
-
-
-	<!-- Forget Password -->
-
-
-
-
-
+	
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-
-	<!-- Include all compiled plugins for theme -->
-	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
-	<!-- the below contains the localstorage functions and other toggling function -->
-	<script src="js/activity.js"></script>
-</body>
 
+</body>
 </html>
