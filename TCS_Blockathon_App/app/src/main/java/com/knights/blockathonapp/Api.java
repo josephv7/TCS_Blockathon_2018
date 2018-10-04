@@ -16,11 +16,11 @@ import retrofit2.http.Query;
 
 public interface Api
 {
-    String BASE_URL = "http://192.168.43.61:3000/";       //192.168.43.61
+    String BASE_URL = "http://192.168.43.61:3000";       //192.168.43.61
     @GET("api/Doctor")
     Call<List<Doctor>> getDoctor();
 
-    @GET("api/queries/ListByPatient?id=resource%3Aorg.example.basic.Patient%23{id1}")
-    Call<List<RecordDocument>> getRecord(@Query("id1") String id);
+    @GET("/api/queries/ListByPatient?id=resource%3Aorg.example.basic.Patient%232001")
+    Call<List<RecordDocument>> getRecord();
 
 }

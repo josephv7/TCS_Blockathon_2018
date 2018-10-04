@@ -18,7 +18,7 @@ public class Home extends AppCompatActivity {
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(Home.this,DoctorsActivity.class);
+                Intent homeIntent = new Intent(Home.this,DocumentFetch.class);
                 startActivity(homeIntent);
                 finish();            }
         });

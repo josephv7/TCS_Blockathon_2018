@@ -30,6 +30,7 @@ public class DoctorsActivity extends AppCompatActivity {
 
     ProgressDialog progressBar;
     ListView listView;
+    String id1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,42 +43,6 @@ public class DoctorsActivity extends AppCompatActivity {
         progressBar.show();
         progressBar.setCancelable(false);
         getDoctors();
-        getRecord();
-
-    }
-    void getRecord()
-    {
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
-                .build();
-
-        Api api = retrofit.create(Api.class);
-        SharedPreferences pref=getSharedPreferences("MyPref",MODE_PRIVATE);
-        String id=pref.getString("username","0");
-        Toast.makeText(getApplicationContext(), "UID: "+id, Toast.LENGTH_SHORT).show();
-
-
-        Call<List<RecordDocument>> call = api.getRecord(id);
-
-
-        call.enqueue(new Callback<List<RecordDocument>>() {
-            @Override
-            public void onResponse(Call<List<RecordDocument>> call, Response<List<RecordDocument>> response) {
-
-                ////Implement the firebase fetching
-                List<RecordDocument> docs = response.body();
-                Toast.makeText(getApplicationContext(), docs.get(0).recordID, Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onFailure(Call<List<RecordDocument>> call, Throwable t) {
-                progressBar.dismiss();
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
