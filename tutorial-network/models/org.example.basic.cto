@@ -37,7 +37,10 @@ participant Doctor identified by doctorId {
   o String lastName
 }
 
-
+transaction ShareDoctor {
+  --> MedicalRecord asset
+  o String newDoctorId
+}
 
 transaction CreateRecord {
   --> MedicalRecord asset
@@ -48,6 +51,12 @@ event SampleEvent {
   --> MedicalRecord asset
   o String oldValue
   o String newValue
+}
+
+event SharingEvent {
+  --> MedicalRecord asset
+  o String oldDoctorId
+  o String newDoctorId
 }
 
 

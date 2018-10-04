@@ -41,3 +41,32 @@ async function sampleTransaction(tx) {  // eslint-disable-line no-unused-vars
 }
 
 
+/**
+ * Sample transaction processor function.
+ * @param {org.example.basic.ShareDoctor} sh The sample transaction instance.
+ * @transaction
+ */
+async function sharing(sh) {  // eslint-disable-line no-unused-vars
+
+    // Save the old value of the asset.
+    const oldDoctorId = sh.asset.doctorId;
+
+    // Update the asset with the new value.
+    sh.asset.doctorId = sh.newDoctorId;
+
+    // Get the asset registry for the asset.
+    const assetRegistry = await getAssetRegistry('org.example.basic.MedicalRecord');
+    // Update the asset in the asset registry.
+    await assetRegistry.update(sh.asset);
+
+    // Emit an event for the modified asset.
+    let event = getFactory().newEvent('org.example.basic', 'SharingEvent');
+    event.asset = sh.asset;
+    event.oldDoctorId = oldDoctorId;
+    event.newDoctorId = sh.newDoctorId;
+    emit(event);
+}
+
+
+
+
