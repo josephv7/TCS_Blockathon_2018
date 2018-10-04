@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -20,16 +23,31 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Home extends AppCompatActivity {
     Intent homeIntent;
+    Button qrbutton;
+//    TODO connect to corresponding variable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        qrbutton = findViewById(R.id.qrbutton);
+
+        final IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setOrientationLocked(true);
+        integrator.setBeepEnabled(false);
+
         homeIntent = new Intent(Home.this,DocumentFetch.class);
 
 
         getRecord();
+
+        qrbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                integrator.initiateScan();
+            }
+        });
 
         Button home_button=(Button)findViewById(R.id.home_button);
         home_button.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +104,34 @@ public class Home extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                //Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+//                Snackbar.make(findViewById(R.id.rootView),"Press Once More To Exit.", Snackbar.LENGTH_SHORT).show();
+//                TODO handle condition
+            } else {
+                //Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                Intent passIntent = new Intent(Home.this,ShareRecord.class);
+
+//                String[] scanParts = result.getContents().split("-");
+//                passIntent.putExtra("dealerId",dealerId);
+//                passIntent.putExtra("userId",scanParts[0]);
+//                passIntent.putExtra("vehicleId",scanParts[1]);
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_SHORT).show();
+                passIntent.putExtra("doctorId",result.getContents());
+                startActivity(passIntent);
+                finish();
+
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 }
