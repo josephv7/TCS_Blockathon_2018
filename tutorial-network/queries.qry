@@ -3,3 +3,9 @@ query ListByPatient {
   statement:
       SELECT org.example.basic.MedicalRecord WHERE (owner == _$id)
 }
+
+query ListRecordDoctorm{
+  description: "List all records accessible by a doctor"
+  statement:
+      SELECT org.example.basic.MedicalRecord WHERE (doctorId == _$id)
+}
