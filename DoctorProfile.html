@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    
+        <section class="wrapper">
+                <div class="container-fostrap">
+                    <div>
+                        <h1 class="heading">
+                            Welcome Dr. Amal!
+                        </h1>
+                    </div>
+                    <div class="content">
+                        <div class="container">
+                            <div class="row">
+                                    <div id="name"></div>
+                                    <div id="id"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+      <style>
+         .card {min-width: 650px;}
+         img, .imgr,.img-card img,.img-card{
+             width: 150px !important;
+             height:150px;
+         }</style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+var id_val;
+ var wraphtml1="<center><div class='col-xs-12 col-sm-4'><div class='card'> <a class='img-card' href=''> <img class='imgr' src='profile.png'/></a><div class='card-content'> <h4 class='card-title'><a href=''>";
+ var wraphtml2="</a></h4><p class=''>"
+ var wraphtml3="</p> </div><div class='card-read-more'></div> </div></div></center>";
+// var object='[{"$class":"org.example.basic.MedicalRecord","recordId":"3002","owner":"resource:org.example.basic.Patient#2002","value":"string","doctorId":"1001"},{"$class":"org.example.basic.MedicalRecord","recordId":"string","owner":"resource:org.example.basic.Patient#2001","value":"string","doctorId":"1001"}]';
+$.getJSON('http://192.168.43.61:3000/api/queries/ListRecordDoctorm?id=1001', function(obj) {
+    for (var key in obj) {
+        console.log(obj[key].recordId);
+        console.log(obj[key].owner);
+        var splithash=obj[key].owner.split("#");
+        var splitdot=splithash[0].split(".");
+        console.log(splitdot[3]+" Number is "+splithash[1]);
+        $("#name").append(wraphtml1 + splitdot[3] + wraphtml2 + "Record ID : "+ obj[key].recordId+ "<br/>"+ splitdot[3] +" ID : "+ splithash[1] +  wraphtml3);
+          $("#id").append(id_val);
+    }
+});
+</script>
+</body>
+</html>
+
