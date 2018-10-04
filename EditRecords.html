@@ -1,0 +1,70 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Edit Records</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-90 p-b-30">
+				<form id="signinform" class="login100-form">
+					<span class="login100-form-title p-b-40">
+						Edit Records
+					</span>
+
+
+					<div class="wrap-input100  m-b-16">
+						<input id="recordIdName" class="input100" type="text" name="email" >
+						<span class="focus-input100"></span>
+					</div>
+
+					
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							View / Update Record
+						</button>
+					</div>
+					
+					
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+	<script src="js/main.js"></script>
+    <script>
+        function getUrlVars() {
+          var vars = {};
+          var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+          vars[key] = value;
+          });
+          return vars;
+          }
+          var recordId = getUrlVars()["id"];
+          var newrecordId= $('#recordIdName').val();
+          console.log(recordId);
+          $("#recordIdName").attr("placeholder", recordId);
+          document.getElementById("signinform").addEventListener("submit", event => {
+            event.preventDefault();
+            var recordsRef = firebase.database().ref("records/");
+            records.child(recordId).set(newrecordId);
+});
+        </script>
+</body>
+</html>
