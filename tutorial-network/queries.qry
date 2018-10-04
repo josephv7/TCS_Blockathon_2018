@@ -1,0 +1,5 @@
+query ListByPatient {
+  description: "List all record of a patient"
+  statement:
+      SELECT org.example.basic.MedicalRecord WHERE (owner == _$id)
+}
