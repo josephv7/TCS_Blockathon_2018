@@ -19,11 +19,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class Home extends AppCompatActivity {
+    Intent homeIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        homeIntent = new Intent(Home.this,DocumentFetch.class);
+
 
         getRecord();
 
@@ -31,7 +35,7 @@ public class Home extends AppCompatActivity {
         home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(Home.this,DocumentFetch.class);
+
                 startActivity(homeIntent);
                 finish();            }
         });
@@ -66,9 +70,11 @@ public class Home extends AppCompatActivity {
                 List<RecordDocument> docs = response.body();
                 Toast.makeText(getApplicationContext(), docs.get(0).recordID, Toast.LENGTH_SHORT).show();
 
-                Intent intent=new Intent(Home.this,DocumentFetch.class);
-                intent.putExtra("doc_id",docs.get(0).recordID);
-                startActivity(intent);
+//                Intent intent=new Intent(Home.this,DocumentFetch.class);
+                homeIntent.putExtra("doc_id",docs.get(0).recordID);
+                Toast.makeText(Home.this, "User Record Fetched", Toast.LENGTH_SHORT).show();
+//                startActivity(intent);
+//                finish();
 
 
             }
