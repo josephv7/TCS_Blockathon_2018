@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
 
                                Intent homeIntent = new Intent(Login.this, Home.class);
                                startActivity(homeIntent);
-//                               finish();
+                               finish();
 
 //                               TODO add other false condition checkings and proper messages
                            }

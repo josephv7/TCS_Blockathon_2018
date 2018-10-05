@@ -55,7 +55,9 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
 
                 startActivity(homeIntent);
-                finish();            }
+//                finish();
+//
+        }
         });
     }
 
@@ -86,8 +88,12 @@ public class Home extends AppCompatActivity {
                 ////Implement the firebase fetching
                 Log.d("response",response.toString());
                 List<RecordDocument> docs = response.body();
-                Toast.makeText(getApplicationContext(), docs.get(0).recordID, Toast.LENGTH_SHORT).show();
+                SharedPreferences pref=getSharedPreferences("MyPref",MODE_PRIVATE);
+                SharedPreferences.Editor editpref=pref.edit();
+                editpref.putString("recordID",docs.get(0).recordID);
+                editpref.commit();
 
+                Toast.makeText(getApplicationContext(), docs.get(0).recordID, Toast.LENGTH_SHORT).show();
 //                Intent intent=new Intent(Home.this,DocumentFetch.class);
                 homeIntent.putExtra("doc_id",docs.get(0).recordID);
                 Toast.makeText(Home.this, "User Record Fetched", Toast.LENGTH_SHORT).show();
@@ -126,7 +132,7 @@ public class Home extends AppCompatActivity {
                 Toast.makeText(this, result.getContents(), Toast.LENGTH_SHORT).show();
                 passIntent.putExtra("doctorId",result.getContents());
                 startActivity(passIntent);
-                finish();
+//                finish();
 
             }
         } else {

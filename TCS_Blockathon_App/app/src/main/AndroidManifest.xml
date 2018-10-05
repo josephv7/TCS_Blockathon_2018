@@ -43,7 +43,7 @@
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
-        <activity android:name=".ShareRecord"></activity>
+        <activity android:name=".ShareRecord" />
     </application>
 
 </manifest>
