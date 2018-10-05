@@ -80,12 +80,14 @@
         }, function (error) {
             console.log("Error: " + error.code);
         });
+
         document.getElementById("signinform").addEventListener("submit", event => {
             event.preventDefault();
            
             console.log("Submition");
             var newrecordId = $('#recordIdName').val();
             recordRef.child(recordId).set(newrecordId);
+            alert("Updated");
         });
     </script>
 </body>
