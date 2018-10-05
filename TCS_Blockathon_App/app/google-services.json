@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "143835828628",
+    "firebase_url": "https://tcs-blockathon-2018.firebaseio.com",
+    "project_id": "tcs-blockathon-2018",
+    "storage_bucket": "tcs-blockathon-2018.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143835828628:android:70e44b17f906dfbe",
+        "android_client_info": {
+          "package_name": "com.knights.blockathonapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143835828628-ibg7eo08s10csrv5c9o7lvpt9kaonngo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.knights.blockathonapp",
+            "certificate_hash": "c5a69f157519d4d96b1d8e35a1dc7423d69f8659"
+          }
+        },
+        {
+          "client_id": "143835828628-gsmoa36tokv7damnbm3la868ggdrfk33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAErL4EiPGpP4h0IZNR6oIY8W3-kdbXoN8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143835828628-gsmoa36tokv7damnbm3la868ggdrfk33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

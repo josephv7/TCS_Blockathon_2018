@@ -1,6 +1,7 @@
 package com.knights.blockathonapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,11 +23,17 @@ public class Login extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("users");
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        sharedPreferences = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -42,6 +49,11 @@ public class Login extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                        if( dataSnapshot.child(username.getText().toString()).exists()){
                            if(dataSnapshot.child(username.getText().toString()).getValue(String.class).equals(password.getText().toString())){
+
+                               editor.putString("username",username.getText().toString());
+//                               editor.putBoolean("loggedin",true);
+                               editor.commit();
+
                                Intent homeIntent = new Intent(Login.this, Home.class);
                                startActivity(homeIntent);
                                finish();
