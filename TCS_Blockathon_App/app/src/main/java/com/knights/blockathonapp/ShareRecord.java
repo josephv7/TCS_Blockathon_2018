@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,6 +35,7 @@ public class ShareRecord extends AppCompatActivity {
         final String id = pref.getString("username","0");
         final String recordID = pref.getString("recordID","0");
         Log.d("hiii",id);
+        Log.d("reccc",recordID);
 
 
         Button btn=(Button)findViewById(R.id.button);
@@ -47,23 +49,23 @@ public class ShareRecord extends AppCompatActivity {
 
                 Api api = retrofit.create(Api.class);
 
-                Call<List<DoctorPost>> call = api.setDoctor(id,"resource:org.example.basic.MedicalRecord#"+recordID);
+                Call<List<DoctorPost>> call = api.setDoctor(id,"resource:org.example.basic.MedicalRecord#3002");
 
 
-                call.enqueue(new Callback<List<DoctorPost>>() {
-                    @Override
-                    public void onResponse(Call<List<DoctorPost>> caldl, Response<List<DoctorPost>> response) {
+//                call.enqueue(new Callback<List<DoctorPost>>() {
+//                    @Override
+//                    public void onResponse(Call<List<DoctorPost>> caldl, Response<List<DoctorPost>> response) {
 
                         ////Implement the firebase fetching
-                        Log.d("response",response.toString());
-                        List<DoctorPost> docs = response.body();
-                        SharedPreferences pref=getSharedPreferences("MyPref",MODE_PRIVATE);
-                        SharedPreferences.Editor editpref=pref.edit();
+//                        Log.d("response",response.toString());
+//                        List<DoctorPost> docs = response.body();
+//                        SharedPreferences pref=getSharedPreferences("MyPref",MODE_PRIVATE);
+//                        SharedPreferences.Editor editpref=pref.edit();
                       //  editpref.putString("recordID",docs.get(0).doctorID);
                       //  editpref.putString("asset",docs.get(0).doctorID);
-                        editpref.commit();
+//                        editpref.commit();
 
-                        Toast.makeText(getApplicationContext(), docs.get(0).doctorID, Toast.LENGTH_SHORT).show();
+                  //      Toast.makeText(getApplicationContext(), docs.get(0).doctorID, Toast.LENGTH_SHORT).show();
 //                Intent intent=new Intent(Home.this,DocumentFetch.class);
 //                        homeIntent.putExtra("doc_id",docs.get(0).recordID);
   //                      Toast.makeText(Home.this, "User Record Fetched", Toast.LENGTH_SHORT).show();
@@ -73,15 +75,15 @@ public class ShareRecord extends AppCompatActivity {
 
                     }
 
-                    @Override
-                    public void onFailure(Call<List<DoctorPost>> call, Throwable t) {
-
-                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+//                    @Override
+//                    public void onFailure(Call<List<DoctorPost>> call, Throwable t) {
+//
+//                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
                 });
 
             }
-        });
+   //     });
 
     }
-}
+

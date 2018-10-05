@@ -1,14 +1,19 @@
 package com.knights.blockathonapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -23,41 +28,70 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Home extends AppCompatActivity {
     Intent homeIntent;
-    Button qrbutton;
+
+    FloatingActionButton qr_code,doctor_act;
+    RelativeLayout container;
+    String string;
 //    TODO connect to corresponding variable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        qrbutton = findViewById(R.id.qrbutton);
+        qr_code=(FloatingActionButton)findViewById(R.id.scanner);
 
         final IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setOrientationLocked(true);
         integrator.setBeepEnabled(false);
+        /////
+        final Context context=Home.this;
+        container=findViewById(R.id.set_view);
+        ImageView doc_bar=(ImageView) findViewById(R.id.doc_bar);
+        ImageView pro_bar=(ImageView) findViewById(R.id.profile_bar);
+        doctor_act=(FloatingActionButton)findViewById(R.id.d_list);
 
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View inflatedLayout= inflater.inflate(R.layout.profile_xml, null, false);
+        container.addView(inflatedLayout);
+
+        doctor_act.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(Home.this,DoctorsActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
+        });
+        doc_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(Home.this,DocumentFetch.class);
+                homeIntent.putExtra("doc_id",string);
+                startActivity(homeIntent);
+                finish();
+            }
+        });
+        pro_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater inflater = LayoutInflater.from(context);
+                View inflatedLayout= inflater.inflate(R.layout.profile_xml, null, false);
+                container.removeAllViews();
+                container.addView(inflatedLayout);
+            }
+        });
+
+        //////
         homeIntent = new Intent(Home.this,DocumentFetch.class);
 
 
         getRecord();
 
-        qrbutton.setOnClickListener(new View.OnClickListener() {
+        qr_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 integrator.initiateScan();
             }
-        });
-
-        Button home_button=(Button)findViewById(R.id.home_button);
-        home_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                startActivity(homeIntent);
-//                finish();
-//
-        }
         });
     }
 
@@ -92,7 +126,7 @@ public class Home extends AppCompatActivity {
                 SharedPreferences.Editor editpref=pref.edit();
                 editpref.putString("recordID",docs.get(0).recordID);
                 editpref.commit();
-
+                string=docs.get(0).recordID;
                 Toast.makeText(getApplicationContext(), docs.get(0).recordID, Toast.LENGTH_SHORT).show();
 //                Intent intent=new Intent(Home.this,DocumentFetch.class);
                 homeIntent.putExtra("doc_id",docs.get(0).recordID);

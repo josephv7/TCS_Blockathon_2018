@@ -2,6 +2,7 @@ package com.knights.blockathonapp;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -29,6 +30,6 @@ public interface Api
     @POST("/api/ShareDoctor")
     @FormUrlEncoded
     Call<List<DoctorPost>> setDoctor(@Field("newDoctorId") String doc_id,
-                        @Field("asset") String asset);
+                        @Field(value = "asset",encoded = true) String asset);
 
 }
