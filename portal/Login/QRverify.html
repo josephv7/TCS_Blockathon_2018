@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V7</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+	
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/qrcode.js"></script>
+</head>
+<body style="background-color:#e6e6e6;">
+	
+	<div style="margin-top: -10%;">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-90 p-b-30">
+				
+					<span class="login100-form-title p-b-40">
+					QR Verification
+					</span>
+					<div id="qrcode" style="width:100px; height:100px; "></div>
+						</div>
+					
+		</div>
+	</div>
+	<center><a style="max-width: 10% ;text-decoration: none;" target="_blank" href="../../DoctorProfile.html" class="login100-form-btn">Dashboard</a>
+	</center>
+	<script type="text/javascript">
+	function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+      });
+      return vars;
+      }
+		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			width : 320,
+			height :320
+		});
+		function makeCode () {		
+			var elText = getUrlVars()["id"];
+			
+			if (!elText) {
+				alert("Input a text");
+				return;
+			}
+			qrcode.makeCode(elText);
+		}
+		makeCode();
+		
+		</script>
+</body>
+</html>
