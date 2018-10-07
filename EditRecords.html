@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Edit Records</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-t-90 p-b-30">
+                <form id="signinform" class="login100-form">
+                    <div id="name"></div>
+
+
+
+                    <div class="wrap-input100  m-b-16">
+                        <input id="recordIdName" class="input100" type="text" name="email">
+                        <span class="focus-input100"></span>
+                    </div>
+
+
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            View / Update Record
+                        </button>
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyB5QZqwCyKMcF4dqqzKcEW9BshtEd4Vcco",
+            authDomain: "tcs-blockathon-2018.firebaseapp.com",
+            databaseURL: "https://tcs-blockathon-2018.firebaseio.com",
+            projectId: "tcs-blockathon-2018",
+            storageBucket: "tcs-blockathon-2018.appspot.com",
+            messagingSenderId: "143835828628"
+        };
+        firebase.initializeApp(config);
+
+
+        var wraphtml1 = '<span class="login100-form-title p-b-40">View / Edit Records of';
+        var wraphtml2 = '</span>';
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+        var recordId = getUrlVars()["id"];
+        console.log(recordId);
+        $("#name").append(wraphtml1 + " " + recordId + " " + wraphtml2);
+
+        var recordRef = firebase.database().ref("records/");
+
+        recordRef.child(recordId).on("value", function (snapshot) {
+            console.log(snapshot.val());
+            var fetchdata = snapshot.val();
+            $("#recordIdName").attr("value", fetchdata);
+        }, function (error) {
+            console.log("Error: " + error.code);
+        });
+
+        document.getElementById("signinform").addEventListener("submit", event => {
+            event.preventDefault();
+           
+            console.log("Submition");
+            var newrecordId = $('#recordIdName').val();
+            recordRef.child(recordId).set(newrecordId);
+            alert("Updated");
+        });
+    </script>
+</body>
+
+</html>

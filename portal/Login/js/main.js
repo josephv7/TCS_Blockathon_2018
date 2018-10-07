@@ -18,9 +18,7 @@
 
   document.getElementById("signinform").addEventListener("submit", event => {
     event.preventDefault();
-
-
-    
+   
   var uname=document.getElementById("loginname").value;
   var upass=document.getElementById("loginpass").value;
     console.log(uname+" "+upass);
